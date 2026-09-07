@@ -50,23 +50,20 @@
     <script src="script.js"></script>
 
     <audio id="musica" loop preload="auto">
-        <source src="../musica.mp3" type="audio/mpeg">
+        <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
-    <script>
-        const musica = document.getElementById("musica");
-        if (musica) {
-            document.addEventListener("click", function iniciarMusica(e) {
-                const objetivo = e.target.closest("a, button");
-                if (!objetivo) return;
+<script>
+document.addEventListener("click", function () {
+    var musica = document.getElementById("musica");
 
-                const texto = (objetivo.textContent || "").trim().toLowerCase();
-                if (texto.includes("my girlfriend") || texto.includes("girlfriend")) {
-                    musica.play().catch(() => {});
-                }
-            });
-        }
-    </script>
+    if (musica) {
+        musica.play().catch(function(error) {
+            console.log("No se pudo reproducir:", error);
+        });
+    }
+}, { once: true });
+</script>
 
 
 <script>
